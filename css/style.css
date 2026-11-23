@@ -29,6 +29,7 @@ body{
   padding-bottom:calc(64px + env(safe-area-inset-bottom, 0px)); /* sticky bar + iPhone home-indicator room */
 }
 @media (min-width:1024px){ body{ padding-bottom:0; } }
+html{ -webkit-text-size-adjust:100%; text-size-adjust:100%; }
 body{ overflow-x:clip; }
 img{ display:block; max-width:100%; }
 a{ color:var(--rose); text-decoration:none; }
