@@ -29,6 +29,7 @@ body{
   padding-bottom:calc(64px + env(safe-area-inset-bottom, 0px)); /* sticky bar + iPhone home-indicator room */
 }
 @media (min-width:1024px){ body{ padding-bottom:0; } }
+body{ overflow-x:clip; }
 img{ display:block; max-width:100%; }
 a{ color:var(--rose); text-decoration:none; }
 a:focus-visible, button:focus-visible, [tabindex]:focus-visible{
@@ -70,6 +71,9 @@ section{ padding-top:var(--sec-pad); padding-bottom:var(--sec-pad); scroll-margi
   font-size:16px; font-weight:600; letter-spacing:.01em; border:1.5px solid transparent;
   transition:transform .3s ease, background-color .3s ease, color .3s ease, box-shadow .3s ease;
   cursor:pointer; white-space:nowrap;
+}
+@media (max-width:767px){
+  .btn{ white-space:normal; height:auto; min-height:52px; padding-top:10px; padding-bottom:10px; text-align:center; }
 }
 .btn::after{
   content:""; position:absolute; top:0; left:-80%; width:50%; height:100%;
@@ -256,6 +260,7 @@ button.chip.active{ background:var(--rose); border-color:var(--rose); color:var(
   background:var(--white); border-radius:28px; box-shadow:var(--shadow-h); overflow:hidden;
   display:grid; grid-template-columns:1fr;
 }
+.offer-card > *{ min-width:0; }
 .offer-content{ padding:var(--s6) var(--s5); order:2; }
 .offer-img{ order:1; height:180px; }
 .offer-img img{ width:100%; height:100%; object-fit:cover; }
@@ -379,10 +384,8 @@ button.chip.active{ background:var(--rose); border-color:var(--rose); color:var(
 /* ---------- Gallery ---------- */
 .gallery{ background:var(--ivory); }
 .filter-row{
-  display:flex; gap:var(--s2); margin-bottom:var(--s6);
-  overflow-x:auto; padding-bottom:var(--s2); -webkit-overflow-scrolling:touch; scrollbar-width:none;
+  display:flex; flex-wrap:wrap; gap:var(--s2); margin-bottom:var(--s6);
 }
-.filter-row::-webkit-scrollbar{ display:none; }
 @media (min-width:600px){ .filter-row{ justify-content:center; flex-wrap:wrap; overflow:visible; } }
 .gallery-grid{ display:grid; grid-template-columns:repeat(2, 1fr); gap:12px; align-items:start; }
 @media (min-width:600px){ .gallery-grid{ grid-template-columns:repeat(3, 1fr); gap:16px; } }
@@ -573,7 +576,7 @@ button.chip.active{ background:var(--rose); border-color:var(--rose); color:var(
 /* ---------- Scroll animations ---------- */
 .fade-up{ opacity:0; transform:translateY(24px); transition:opacity .7s var(--ease), transform .7s var(--ease); }
 .fade-up.in{ opacity:1; transform:none; }
-.why .feature-row.fade-up{ transform:translateX(28px); }
+.why .feature-row.fade-up{ transform:translateY(24px); }
 .why .feature-row.fade-up.in{ transform:none; }
 
 /* ---------- Reduced motion ---------- */
